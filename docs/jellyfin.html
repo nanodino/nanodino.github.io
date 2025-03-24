@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jellyfin two ways</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+    <main>
+        <h1>jellyfin, one way</h1>
+<p>I first installed Jellyfin running on a Docker container on my big &quot;server&quot; machine. This box had been running a couple of other, smaller, much less computationally intensive services for months then. It has a huge hard drive. It seemed like a great idea!</p>
+<p>It was not. It turns out using the same computer as a Linux frankengaming PC and a server is a terrible idea. It turns out thinking &quot;it won't happen to me&quot; does not, in fact, make it impossible for it to happen to you. Three days later everything was down, even a simple <code>docker container ls</code> would hang forever, and I was 1000 km away from the machine itself.</p>
+<p>Scrap that then.</p>
+<h1>jellyfin, but better</h1>
+<p>I acquired (bought from a surly teenager at Canada Computers) a hard drive and plugged it into my raspberry pi. Like the frankengaming PC, the raspberry pi had been running services for a while. It's a lot more stable. I don't want to have to eat my words in a while, but this is <em>a lot</em> better. I'm also running it on the bare metal, which required only a tiny bit more configuration (namely, I had to give the <code>jellyfin</code> user read permissions for the directory media is in). I used <a href="https://pimylifeup.com/raspberry-pi-jellyfin/">this</a> guide as a general reference where needed.</p>
+<h1>scattered thoughts</h1>
+<ul>
+<li>
+<p>The 1TB drive I bought is smaller than the raspberry pi housing. It had been a while since I bought physical media like that and the minituarization of components continues unabated.</p>
+</li>
+<li>
+<p>I am now watching <code>The Haunting of Hill House</code>, which I ripped from DVDs I bought, running from my own server. I think this is as satisfying as the show itself.</p>
+</li>
+<li>
+<p>I want a Pebble watch quite badly, but I don't need one and if I'm not buying American strawberries it seems quite ridiculous to then go and spend the equivalent of many cases of strawberries on a something I want but don't need. I already own watches, and I already own things I like to tinker with. So this is just a complaint about nothing.</p>
+</li>
+</ul>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 Nancy Cantu</p>
+    </footer>
+</body>
+</html>
