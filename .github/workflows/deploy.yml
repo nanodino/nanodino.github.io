@@ -8,58 +8,38 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  
         with:
           node-version: '20'
+          cache: 'npm'  
 
       - name: Install dependencies
         run: npm install
 
       - name: Build site
-        run: node src/scripts/build.js
+        run: npm run build
 
-      - name: List contents of dist directory
-        run: |
-          echo "Contents of dist directory:"
-          ls -la ./dist
-
-      - name: Upload dist directory
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Download dist artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: ./dist
+      - name: Copy CNAME to dist
+        run: cp CNAME dist/
 
       - name: Copy contents to docs
         run: |
           rm -rf ./docs
-          mkdir ./docs
+          mkdir -p ./docs
           cp -r ./dist/* ./docs/
-          rm -rf ./dist
 
       - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add .
-          git commit -m 'Deploy to GitHub Pages'
-          git push origin main
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Deploy to GitHub Pages'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
