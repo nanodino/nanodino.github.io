@@ -1,5 +1,5 @@
 ---
-title: books_1
+title: january 2025 reading update
 date: 2025-01-22 
 author: Nancy Cantu
 description: I read some books and then I talked about it.

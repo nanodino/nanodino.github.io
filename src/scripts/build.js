@@ -5,6 +5,13 @@ const MarkdownIt = require('markdown-it');
 const matter = require('gray-matter');
 const md = new MarkdownIt();
 
+Handlebars.registerHelper('formatDate', function(dateString) {
+  if (!dateString) return '';
+  
+  const date = new Date(dateString);
+  return date.toISOString().split('T')[0];
+});
+
 const rootDir = path.join(__dirname, '../../');
 const contentDir = path.join(rootDir, 'src/content');
 const layoutsDir = path.join(rootDir, 'src/layouts');
