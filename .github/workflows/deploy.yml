@@ -19,17 +19,22 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm i
+        run: npm install
 
       - name: Build site
         run: node src/scripts/build.js
 
-      #debug
-      - name: List contents of dist directory
-        run: ls -la ./dist
+      - name: Copy contents to docs
+        run: |
+          rm -rf ./docs
+          mkdir ./docs
+          cp -r ./dist/* ./docs/
+          rm -rf ./dist
 
-      - name: Deploy 
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m 'Deploy to GitHub Pages'
+          git push origin main
