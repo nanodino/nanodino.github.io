@@ -19,12 +19,27 @@ nav {
 
 nav a {
     margin-right: 1rem;
-    color: #50fa7b; /* Dracula green */
+    color: #50fa7b; /* Dracula green - keeping navigation links green */
     text-decoration: none;
 }
 
 nav a:hover {
     text-decoration: underline;
+}
+
+/* Update main content links to use Dracula cyan (blade color) */
+main a {
+    color: #8be9fd; /* Dracula cyan/blade */
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+
+/* For visited links, use a slightly dimmed version of the cyan */
+main a:visited {
+    color: #6bc5d7; /* Slightly dimmed version of Dracula cyan */
 }
 
 footer {
