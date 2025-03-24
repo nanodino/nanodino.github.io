@@ -52,3 +52,29 @@ pre {
     border-radius: 4px;
     overflow-x: auto;
 }
+
+.posts-list {
+    margin-top: 2rem;
+}
+
+.post-item {
+    margin-bottom: 1.5rem;
+    list-style: none;
+}
+
+.post-date {
+    color: #bd93f9; 
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.post-description {
+    color: #6272a4; 
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+ul {
+    padding-left: 1rem;
+}

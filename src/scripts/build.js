@@ -35,18 +35,28 @@ function buildSite() {
 
     const postsDir = path.join(contentDir, 'blog/posts');
     const posts = fs.readdirSync(postsDir);
+    
+    const allPosts = [];
 
     posts.forEach(post => {
         const postPath = path.join(postsDir, post);
         const postContent = fs.readFileSync(postPath, 'utf-8');
         const { data: frontMatter, content: markdownContent } = matter(postContent);
         const htmlContent = md.render(markdownContent);
-        const postData = { ...frontMatter, content: htmlContent };
+        const postData = { 
+            ...frontMatter, 
+            content: htmlContent,
+            url: post.replace('.md', '.html')
+        };
+        
+        allPosts.push(postData);
 
         const output = compileTemplate('post.hbs', postData);
         const outputFilePath = path.join(outputDir, post.replace('.md', '.html'));
         fs.writeFileSync(outputFilePath, output);
     });
+    
+    allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const pagesDir = path.join(contentDir, 'pages');
     const pages = fs.readdirSync(pagesDir);
@@ -56,7 +66,11 @@ function buildSite() {
         const pageContent = fs.readFileSync(pagePath, 'utf-8');
         const { data: frontMatter, content: markdownContent } = matter(pageContent);
         const htmlContent = md.render(markdownContent);
-        const pageData = { ...frontMatter, content: htmlContent };
+        
+        let pageData = { ...frontMatter, content: htmlContent };
+        if (page === 'index.md') {
+            pageData.posts = allPosts;
+        }
 
         const output = compileTemplate('main.hbs', pageData);
         const outputFilePath = path.join(outputDir, page.replace('.md', '.html'));
