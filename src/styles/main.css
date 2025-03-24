@@ -1,0 +1,54 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #282a36; /* Dracula background */
+    color: #f8f8f2; /* Dracula foreground */
+}
+
+header {
+    margin-bottom: 2rem;
+    color: #bd93f9; /* Dracula purple */
+}
+
+nav {
+    margin-bottom: 2rem;
+}
+
+nav a {
+    margin-right: 1rem;
+    color: #50fa7b; /* Dracula green */
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #44475a; /* Dracula comment */
+    color: #6272a4; /* Dracula comment */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ff79c6; /* Dracula pink */
+}
+
+code {
+    background-color: #44475a; /* Dracula comment */
+    color: #f8f8f2; /* Dracula foreground */
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+pre {
+    background-color: #44475a; /* Dracula comment */
+    color: #f8f8f2; /* Dracula foreground */
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+}
