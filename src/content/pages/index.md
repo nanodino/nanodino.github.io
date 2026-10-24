@@ -1,3 +1,1 @@
 # scattered thoughts
-
-Yo.
