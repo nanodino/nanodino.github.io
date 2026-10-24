@@ -1,1 +1,1 @@
-# scattered thoughts
+# notes
